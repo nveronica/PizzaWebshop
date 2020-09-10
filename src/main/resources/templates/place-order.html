@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<meta charset="UTF-8">
+<title>Order your pizza here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+</head>
+<body>
+<div>
+	<form th:action="@{/place-order}" method="post" th:object="${userList}">
+	<table style="border: 1px solid black;">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone number</th>
+				<th>Address</th>
+			</tr>	
+			 </thead>
+			<tbody>
+				
+        <tr th:each="user, itemStat : *{userList}">
+            <td><input th:field="*{userList[__${itemStat.index}__].userId}"/></td>
+            <td><input th:field="*{userList[__${itemStat.index}__].name}"/></td>
+            <td><input th:field="*{userList[__${itemStat.index}__].email}"/></td>
+            <td><input th:field="*{userList[__${itemStat.index}__].phoneNumber}"/></td>
+            <td><input th:field="*{userList[__${itemStat.index}__].adress}"/></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<button type="submit">Megrendel</button>
+			</td>
+		</tr>
+			</tbody>
+		</table>
+	</form>
+		
+	</div>
+</body>
+</html>

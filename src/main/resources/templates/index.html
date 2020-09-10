@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<meta charset="UTF-8">
+<title>Order your pizza here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+</head>
+<body>
+	<div>
+	<form th:action="@{/place-order}" method="post" th:object="${pizzaList}">
+	<table style="border: 1px solid black;">
+			<thead>
+			<tr>
+				<th><img class="pizza_img" th:src="@{/images/Margherita_Pizza.jpg}" /></th>
+				<th><img  class="pizza_img" th:src="@{/images/pizza-pugliese.jpg}" /></th>
+				<th><img  class="pizza_img" th:src="@{/images/pizza-capricciosa.jpg}" /></th>
+			</tr>	
+			 </thead>
+			<tbody>
+				
+        <tr th:each="pizza, itemStat : *{pizzaList}">
+            <td><span th:text="*{pizzaList[__${itemStat.index}__].id}"></span></td>
+            <td><span th:text="*{pizzaList[__${itemStat.index}__].name}"></span></td>
+            <td><span th:text="*{pizzaList[__${itemStat.index}__].price}"></span></td>
+			<td><input th:field="*{pizzaList[__${itemStat.index}__].quantity}" name="quantity" min="0" max="5" value="0" type="number"/></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<button type="submit">Tovább</button>
+			</td>
+		</tr>
+			</tbody>
+		</table>
+	</form>
+		
+	</div>
+	
+</body>
+</html>
