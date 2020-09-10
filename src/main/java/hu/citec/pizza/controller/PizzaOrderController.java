@@ -1,23 +1,18 @@
 package hu.citec.pizza.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+import hu.citec.pizza.model.Pizza;
+import hu.citec.pizza.model.PizzaWrapper;
+import hu.citec.pizza.model.User;
+import hu.citec.pizza.model.UserWrapper;
+import hu.citec.pizza.service.PizzaOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import hu.citec.pizza.model.Pizza;
-import hu.citec.pizza.model.PizzaWrapper;
-import hu.citec.pizza.model.User;
-import hu.citec.pizza.model.UserWrapper;
-import hu.citec.pizza.service.PizzaOrderService;
+import java.util.List;
 @Controller
 public class PizzaOrderController {
 	@Autowired
